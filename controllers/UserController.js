@@ -1,10 +1,10 @@
-const user = require("../models/user")
-const PasTropLongCaVaEtreLongEtChiant = require("../views/PasTropLongCaVaEtreLongEtChiant");
+const User = require('../models/user')
+const PasTropLongLeNomCaVaEtreLongEtChiant = require('../views/UserView');
 
 function getUser(req, res){
-    const user = new User(1,"Rocher");
-    res.end(PasTropLongCaVaEtreLongEtChiant(user));
+    const user = new User(1,'Rocher');
+   res.end(PasTropLongLeNomCaVaEtreLongEtChiant(user));
 
 }
 
-module.exports = getUser();
+module.exports = getUser;

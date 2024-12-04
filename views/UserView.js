@@ -1,5 +1,5 @@
-function PasTropLongCaVaEtreLongEtChiant(user){
-    return(`userId: ${user}, userName: ${user.name}`);
-
+function PasTropLongLeNomCaVaEtreLongEtChiant(user){
+    return(`userId : ${user.id}, userName : ${user.name}`);
+ 
 }
-module.exports=PasTropLongCaVaEtreLongEtChiant();
+module.exports = PasTropLongLeNomCaVaEtreLongEtChiant;

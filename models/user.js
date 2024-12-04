@@ -5,4 +5,4 @@ class User {
         this.name=name;
     }
 }
-module.exports=User;
+module.exports = User;
