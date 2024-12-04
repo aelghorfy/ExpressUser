@@ -1,9 +1,9 @@
 const express = require('express');
 const app = express();
-const monUser = require('./controllers/UserController');
+const getUser = require('./controllers/UserController');
 
 app.get('/user', (res, req) =>{
-    monUser(res,req);
+    getUser(res,req);
 });
 
 app.listen(3000, ()=>(
