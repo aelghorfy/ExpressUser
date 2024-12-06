@@ -2,6 +2,7 @@ const User = require('../models/User')
 const userView = require('../views/UserView');
 const loginView = require('../views/loginView');
 const registerView = require('../views/RegisterView');
+/* const deleteView = require('../views/DeleteView'); */
 const db = require('../db/db');
 const bcrypt = require('bcrypt')
 
@@ -21,14 +22,18 @@ function showLogin(req, res){
     res.send(loginView());
 }
 
+/* function showDelete(req, res){
+    res.send(deleteView());
+} */
+
 function treatRegister(req, res){
     const saltRounds = 10;
-    const {username, password} = req.body;
+    const {username, password, secretquestion} = req.body;
     bcrypt.hash(password, saltRounds, (err, hashedPassword) => {
 
-        const newUser = new User (username,hashedPassword);
-    const query = 'INSERT INTO users (username, password) VALUES (?,?)';
-    db.run(query,[newUser.username,newUser.password],
+        const newUser = new User (username,hashedPassword, secretquestion);
+    const query = 'INSERT INTO users (username, password, secretquestion) VALUES (?,?,?)';
+    db.run(query,[newUser.username,newUser.password,newUser.secretquestion],
         function (err){
             if(err){
             console.error('register failed: ',err.message)
@@ -43,8 +48,16 @@ function treatRegister(req, res){
     
 }
 
+/* function treatDelete(req, res){
+   const {password, secretquestion} = req.body;
 
-// fonction qui lance le traitement des données du formulaire de connexion
+
+
+
+} */
+
+
+
 function treatLogin(req, res) {
     const {username, password} = req.body;
     const newUser= new User(username, password);
