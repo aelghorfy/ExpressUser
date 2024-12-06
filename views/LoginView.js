@@ -1,18 +1,13 @@
-function loginView(){
+function loginView() {
     return `<html>
-    <body>
-    <main>
-    <form method= 'post' action='/login'>
-    <input type ='text' name= 'user' placeholder='UserName' >
-    <input type ='password' name= 'password' placeholder='Password' >
-    <input type = 'submit' value='Log In'>
-    
-    </form>
-    </main>
-    </body>
-    </html>`;
+                <body>
+                    <form method='POST' action='/login'>
+                        <input type='text' placeholder='name' name='username'/>
+                        <input type='password' placeholder='password' name='password'/>
+                        <button type='submit'>Log In</button>
+                    </form>
+                </body>
+            </html>`
 }
-
-
+ 
 module.exports = loginView;
-
