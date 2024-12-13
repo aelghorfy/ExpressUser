@@ -1,0 +1,13 @@
+<html>
+    <%- include('./partials/head.ejs'); %>
+                <body>
+                    <%- include('./partials/nav.ejs'); %>
+
+                    <form method='POST' action='/login'>
+                        <input type='text' placeholder='Name' name='username'/>
+                        <input type='password' placeholder='Password' name='password'/>
+                        <button type='submit'>Log In</button>
+                    </form>
+                </body>
+                <footer> <p>&copy; 2024 ExampleCorp. All rights reserved.</p>
+            </html>

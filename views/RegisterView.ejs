@@ -1,0 +1,19 @@
+
+
+<html lang="en">
+    <%- include('./partials/head.ejs'); %>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register</title>
+</head>
+<body>
+    <%- include('./partials/nav.ejs'); %>
+    <form method="POST" action="/register">
+        <input type="text" name="username" placeholder="New Name" required/>
+        <input type="password" name="password" placeholder="New Password" required/>
+        <button type="submit">Register</button>
+    </form>
+</body>
+<footer> <p>&copy; 2024 ExampleCorp. All rights reserved.</p>
+</html>
