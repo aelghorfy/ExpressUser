@@ -26,7 +26,7 @@ function showLogout(req, res) {
 
 // Function to handle user registration
 function treatRegister(req, res) {
-    const { username, password } = req.body; // No role provided
+    const { username, password } = req.body;
     const query = 'SELECT * FROM users WHERE username = ?';
     
     db.get(query, [username], (err, row) => {
@@ -43,7 +43,7 @@ function treatRegister(req, res) {
                     console.error('Hashing error:', err.message);
                     res.send('ERROR');
                 } else {
-                    const newUser = new User(username, hashedPassword, 'ROLE_USER'); // Default role is ROLE_USER
+                    const newUser = new User(username, hashedPassword, 'ROLE_USER'); // Default ROLE_USER
                     const insertQuery = 'INSERT INTO users (username, password, role) VALUES (?,?,?)';
                     db.run(insertQuery, [newUser.username, newUser.password, newUser.role], function (err) {
                         if (err) {
@@ -76,7 +76,7 @@ function treatLogin(req, res) {
                     console.log("Password does NOT match!");
                     res.send('Failed to compare');
                 } else if (result) {
-                    console.log(newUser, 'Connected!');
+                    console.log(newUser.username, 'Connected!');
                     req.session.isLoggedIn = true;
                     req.session.username = username;
                     req.session.role = row.role;

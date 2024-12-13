@@ -69,6 +69,7 @@ app.get('/logout', (req, res) => {
             console.log(err);
         } else {
             res.redirect('/login');
+            console.log(' user has disconnected !')
         }
     });
 });
