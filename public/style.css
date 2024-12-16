@@ -1,18 +1,36 @@
 
 body {
     font-family: Arial, sans-serif;
-    background-color: #EBF5F1; 
-    color: #333;
-    margin: 0;
-    padding: 0;
+    background-image: url('/image/plaants.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    background-color: #EBF5F1;
+    color: rgb(52, 121, 58);
+
 }
 
+.marketPlant {
+    background-image: url('/image/potsplants.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-color: #EBF5F1;
+
+}
+
+.forumLink {
+
+/*     background-image: url('/image/Designer.png'); */
+    background-repeat: no-repeat;
+    background-color: #EBF5F1;
+
+}
 
 nav {
     background-color: #BBE0D7; 
     overflow: hidden;
     padding: 10px 0;
-    box-shadow: 0 4px 8px 0 #AED2C9;
+    box-shadow: 0 4px 8px 0 #1f4426;
 }
 
 nav h1 {

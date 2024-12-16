@@ -21,7 +21,7 @@ function showLogin(req, res) {
 
 // Function to show the logout view
 function showLogout(req, res) {
-    res.render('logout');
+    res.send('SUCCESSFULLY LOGGED OUT');
 }
 
 // Function to handle user registration
@@ -93,6 +93,18 @@ function treatLogin(req, res) {
     });
 }
 
+function treatLogout(req, res) {
+    req.session.destroy((err) => {
+        if (err) {
+            console.error('Error destroying session:', err);
+            res.status(500).send('Error logging out');
+        } else {
+            res.redirect('/login');
+            console.log()
+        }
+    });
+}
 
 
-module.exports = { getUser, showLogin, treatLogin, showRegister, treatRegister, showLogout };
+
+module.exports = { getUser, showLogin, treatLogin, showRegister, treatRegister, showLogout, treatLogout };

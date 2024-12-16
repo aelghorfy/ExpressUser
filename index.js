@@ -2,8 +2,9 @@ const express = require('express');
 const session = require('express-session');
 const bodyParser = require('body-parser');
 const path = require('path');
-const {treatLogin, treatRegister, showLogout } = require('./controllers/UserController');
+const {treatLogin, treatRegister, showLogout, treatLogout } = require('./controllers/UserController');
 const app = express();
+const { v4: uuidv4 } = require('uuid');
 
 // Middleware to parse JSON
 app.use(express.json());
@@ -22,11 +23,20 @@ app.use(express.static('public'));
 
 // Session initialize
 app.use(session({
+    genid: (req) => { return uuidv4(); },
     secret: 'secret-key',
     resave: false,
-    saveUninitialized: false,
-    cookie: { maxAge: 90000 } // session timeout of 90 seconds
+    saveUninitialized: true,
+    cookie: { secure: false, httpOnly: true } // Set secure to false for local development
 }));
+
+// Middleware to prevent caching
+app.use((req, res, next) => { 
+    res.set('Cache-Control', 'no-store, no-cache, must-revalidate');
+    res.set('Pragma', 'no-cache');
+    res.set('Expires', '0');
+    next();
+});
 
 // Listen on port 3000
 app.listen(3000, () => {
@@ -44,6 +54,26 @@ app.get('/', (req, res) => {
 app.get('/login', (req, res) => {
     const loggedIn = req.session.isLoggedIn || false;
     res.render('loginView', { loggedIn: loggedIn });
+});
+// Profil route
+app.get('/profil', (req, res) => {
+    const loggedIn = req.session.isLoggedIn || false;
+    const role = req.session.role || 'ROLE_USER';
+    res.render('profilView', { loggedIn: loggedIn, role: role});
+});
+
+// Forum route
+app.get('/forum', (req, res) => {
+    const loggedIn = req.session.isLoggedIn || false;
+    const role = req.session.role || 'ROLE_USER';
+    res.render('forumView', { loggedIn: loggedIn, role: role});
+});
+
+// Market route
+app.get('/marketplace', (req, res) => {
+    const loggedIn = req.session.isLoggedIn || false;
+    const role = req.session.role || 'ROLE_USER';
+    res.render('marketView', { loggedIn: loggedIn, role: role});
 });
 
 // Register route
@@ -64,15 +94,14 @@ app.post('/register', (req, res) => {
 
 // Handle logout
 app.get('/logout', (req, res) => {
-    req.session.destroy((err) => {
-        if (err) {
-            console.log(err);
-        } else {
-            res.redirect('/login');
-            console.log(' user has disconnected !')
-        }
-    });
+    treatLogout(req, res);
 });
+
+app.use((req, res, next) => { 
+    res.set('Cache-Control', 'no-store, no-cache, must-revalidate, private');
+    next();
+});
+
 
 // Logged in route
 app.get('/logedIn', (req, res) => {

@@ -1,5 +1,5 @@
 <nav>
-    <h1>ExampleCorp</h1>
+    <h1>SproutLink</h1>
     <ul>
         <li><a href="/">Home</a></li>
         <% if (typeof loggedIn == 'undefined' || !loggedIn) { %>
@@ -9,7 +9,9 @@
             <li><a href="/admin">Profile</a></li>
             <li><a href="/logout">Logout</a></li>
         <% } else { %>
-            <li><a href="/user">Profile</a></li>
+            <li><a href="/marketplace">Marketplace</a></li>
+            <li><a href="/profil">Profil</a></li>
+            <li><a href="/forum">Forum</a></li>
             <li><a href="/logout">Logout</a></li>
         <% } %>
     </ul>
