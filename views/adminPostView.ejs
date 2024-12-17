@@ -1,0 +1,24 @@
+<html>
+    <%- include('./partials/head.ejs'); %>
+
+<body>
+    <%- include('./partials/nav.ejs'); %>
+    <h1>Pending Posts</h1>
+    <ul>
+        <% posts.forEach(post => { %>
+            <div>
+                <h3><%= post.title %></h3>
+                <p><%= post.content %></p>
+                <!-- Approve Post -->
+                <form action="/admin/posts/<%= post.id %>?action=approve" method="POST">
+                    <button type="submit">Approve</button>
+                </form>
+                <!-- Delete Post -->
+                <form action="/admin/posts/<%= post.id %>?action=delete" method="POST">
+                    <button type="submit">Delete</button>
+                </form>
+            </div>
+        <% }) %>        
+</body>
+<%- include('./partials/footer.ejs'); %>
+</html>

@@ -95,6 +95,13 @@ form button {
     width: 100%;
 }
 
+textarea {
+        resize: none; 
+        width: 400px;
+        height: 200px;
+        }
+
+
 form button:hover {
     background-color: #88C9B8;
 }
@@ -112,4 +119,64 @@ footer {
 
 footer p {
     margin: 0;
+}
+
+.post {
+    background-color: #ffffff;
+    border-radius: 10px;
+    padding: 20px;
+    margin: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 350px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.post:hover {
+    transform: scale(1.05);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+}
+
+
+.post h2 {
+    color: #4CAF50;
+    font-size: 1.8em;
+    margin-bottom: 10px;
+}
+
+
+.post p {
+    color: #555;
+    font-size: 1.1em;
+    margin: 8px 0;
+}
+
+
+.post p:last-child {
+    font-weight: bold;
+    color: #2e8b57;
+    font-size: 1.3em;
+}
+
+
+.post img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 8px;
+    margin-top: 15px;
+}
+
+
+.marketplace {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+}
+
+
+@media (max-width: 768px) {
+    .post {
+        max-width: 100%;
+    }
 }
