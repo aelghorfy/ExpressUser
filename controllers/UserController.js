@@ -1,4 +1,5 @@
 const User = require('../models/User');
+const Post = require('../models/Post');
 const db = require('../db/db');
 const bcrypt = require('bcrypt');
 const saltRounds = 10;
@@ -9,20 +10,6 @@ function getUser(req, res) {
     res.render('userView', { user: user });
 }
 
-// Function to show the registration form
-function showRegister(req, res) {
-    res.render('register');
-}
-
-// Function to show the login form
-function showLogin(req, res) {
-    res.render('loginView');
-}
-
-// Function to show the logout view
-function showLogout(req, res) {
-    res.send('SUCCESSFULLY LOGGED OUT');
-}
 
 // Function to handle user registration
 function treatRegister(req, res) {
@@ -78,6 +65,7 @@ function treatLogin(req, res) {
                 } else if (result) {
                     console.log(newUser.username, 'Connected!');
                     req.session.isLoggedIn = true;
+                    req.session.userId = row.id; // Set the userId in the session
                     req.session.username = username;
                     req.session.role = row.role;
                     res.render('userView', { user: row, loggedIn: true, role: row.role });
@@ -107,4 +95,4 @@ function treatLogout(req, res) {
 
 
 
-module.exports = { getUser, showLogin, treatLogin, showRegister, treatRegister, showLogout, treatLogout };
+module.exports = { getUser,treatLogin, treatRegister, treatLogout };

@@ -1,15 +1,30 @@
 <%- include('./partials/head.ejs'); %>
 <body class="marketPlant">
     <%- include('./partials/nav.ejs'); %>
+
+        <form action="/marketplace" method="get" class="searchbar"> 
+            <input type="text" name="search" placeholder="Search by title or content"> 
+            <input type="number" name="minPrice" placeholder="Min Price"> 
+            <input type="number" name="maxPrice" placeholder="Max Price"> 
+            <button type="submit">Search</button> </form>
     <div class="marketplace">
+        
         <% posts.forEach(post => { %>
             <div class="post">
-                <h2><%= post.title %></h2>
-                <p><%= post.content %></p>
-                <p>Price: €<%= post.price %></p>
+                <h2>Title : <%= post.title %></h2>
+                <p>Content : <%= post.content %></p>
+                <p>Posted by : <%= post.username %></p>
+                <p>Price :<%= post.price %>€</p>
                 <% if (post.imagePath) { %>
                     <img src="<%= post.imagePath.replace('/public', '') %>" alt="Post image">
-
+                <% } %>
+                <% if (loggedIn && (role === 'ROLE_ADMIN' || post.userId === userId)) { %>
+                    <!-- <form action="/admin/posts/<%= post.id %>/edit" method="get" style="display:inline;">
+                        <button type="submit">Edit</button>
+                    </form> -->
+                    <form action="/admin/posts/<%= post.id %>?action=delete" method="post" class="delete">
+                        <button type="submit" >Delete</button>
+                    </form>
                 <% } %>
             </div>
         <% }) %>

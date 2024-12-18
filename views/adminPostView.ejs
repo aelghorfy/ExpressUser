@@ -6,9 +6,13 @@
     <h1>Pending Posts</h1>
     <ul>
         <% posts.forEach(post => { %>
-            <div>
+            <div class="post">
                 <h3><%= post.title %></h3>
                 <p><%= post.content %></p>
+                <p><%= post.userId %></p>
+                <% if (post.imagePath) { %>
+                    <img src="<%= post.imagePath.replace('/public', '') %>" alt="Post image">
+                    <% } %>
                 <!-- Approve Post -->
                 <form action="/admin/posts/<%= post.id %>?action=approve" method="POST">
                     <button type="submit">Approve</button>
