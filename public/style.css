@@ -20,7 +20,7 @@ body {
 
 .forumLink {
 
-/*     background-image: url('/image/Designer.png'); */
+    background-image: url('/image/bgPlt.jpg');
     background-repeat: no-repeat;
     background-color: #EBF5F1;
 
@@ -181,17 +181,43 @@ footer p {
     }
 }
 
+.hidden {
+    display: none;
+}
+
+.toggle-button {
+    position: fixed;
+    top: 70px; /* Position the button below the navigation bar */
+    right: 20px; /* Position the button at the right */
+    padding: 10px 20px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    z-index: 1000;
+}
+
+.toggle-button:hover {
+    background-color: #45a049;
+}
+
 .searchbar {
     justify-content: center;
-    margin: 20px 30%;
-    max-width: 100%;
-    max-height: 100px;
-    margin: 0 auto; /* Center the search bar */
+    margin: 0 auto;
+    max-width: 80%;
     padding: 10px;
     background-color: #fff;
     border-radius: 10px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    position: fixed;
+    z-index: 900;
+    top: 100px; /* Position the search bar below the button */
+    left: 50%;
+    transform: translateX(-50%);
 }
+
+
 
 .searchbar input[type="text"],
 .searchbar input[type="number"] {
@@ -224,4 +250,19 @@ footer p {
 
 .delete button:hover {
     background-color: rgb(177, 15, 15);
+}
+
+
+
+.gif-container {
+    width: 100px; 
+    height: 100px; 
+    background-image: url('/gif/gifPlant.gif');
+    background-size: contain;
+    background-repeat: no-repeat; 
+    background-position: center;
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    z-index: 1000;
 }

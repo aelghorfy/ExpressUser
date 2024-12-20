@@ -22,5 +22,19 @@
                       
 
                 </body>
+                <script>
+                    function validateFileSize() {
+                       const fileInput = document.getElementById('postImage');
+                       const file = fileInput.files[0];
+                       const maxSize = 2 * 1024 * 1024;
+                
+                        if (file.size > maxSize) {
+                            alert('File size exceeds 2MB. Please upload a smaller file.');
+                            return false;
+                        }
+                        return true;
+                    }
+                </script>
+                
                 <%- include('./partials/footer.ejs'); %>
             </html>

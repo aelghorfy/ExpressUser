@@ -2,11 +2,15 @@
 <body class="marketPlant">
     <%- include('./partials/nav.ejs'); %>
 
-        <form action="/marketplace" method="get" class="searchbar"> 
-            <input type="text" name="search" placeholder="Search by title or content"> 
-            <input type="number" name="minPrice" placeholder="Min Price"> 
-            <input type="number" name="maxPrice" placeholder="Max Price"> 
-            <button type="submit">Search</button> </form>
+    <button id="toggleSearchBar" class="toggle-button">Search</button>
+     <div id="searchBarContainer" class="searchbar hidden">
+    <form action="/marketplace" method="get"> 
+        <input type="text" name="search" placeholder="Search by title or content">
+        <input type="number" name="minPrice" placeholder="Min Price">
+        <input type="number" name="maxPrice" placeholder="Max Price"> 
+        <button type="submit">Search</button> 
+    </form> 
+    </div>
     <div class="marketplace">
         
         <% posts.forEach(post => { %>
@@ -29,5 +33,18 @@
             </div>
         <% }) %>
     </div>
+
 </body>
+<script>
+    document.getElementById('toggleSearchBar').addEventListener('click', function() {
+        var searchBarContainer = document.getElementById('searchBarContainer');
+        if (searchBarContainer.classList.contains('hidden')) {
+            searchBarContainer.classList.remove('hidden');
+        } else {
+            searchBarContainer.classList.add('hidden');
+        }
+    });
+</script>
+
+<div class="gif-container"></div>
 <%- include('./partials/footer.ejs'); %>

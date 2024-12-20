@@ -99,12 +99,12 @@ app.get('/forum', (req, res) => {
     res.render('forumView', { loggedIn: loggedIn, role: role});
 });
 
-// Market route
+// Market route with a filter search
 app.get('/marketplace', (req, res) => {
     const { search, minPrice, maxPrice } = req.query;
     const loggedIn = req.session.isLoggedIn || false;
     const role = req.session.role || 'ROLE_USER';
-    const userId = req.session.userId || null; // Get the logged-in user's ID
+    const userId = req.session.userId || null;
 
     let query = 'SELECT posts.*, users.username FROM posts JOIN users ON users.id = posts.userId WHERE status = "APPROVED"';
     const params = [];

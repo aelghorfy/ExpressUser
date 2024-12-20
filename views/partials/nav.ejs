@@ -1,5 +1,6 @@
 <nav>
     <h1>SproutLink</h1>
+   
     <ul>
         <li><a href="/">Home</a></li>
         <% if (typeof loggedIn == 'undefined' || !loggedIn) { %>
@@ -7,12 +8,12 @@
             <li><a href="/login">Login</a></li>
         <% } else if (role == "ROLE_ADMIN") { %>
             <li><a href="/adminpost">Duty</a></li>
-            <li><a href="/profil">Profil</a></li>
+            <li><a href="/profil">Post</a></li>
             <li><a href="/marketplace">Marketplace</a></li>
             <li><a href="/forum">Forum</a></li>
             <li><a href="/logout">Logout</a></li>
         <% } else { %>
-            <li><a href="/profil">Profil</a></li>
+            <li><a href="/profil">Post</a></li>
             <li><a href="/marketplace">Marketplace</a></li>
             <li><a href="/forum">Forum</a></li>
             <li><a href="/logout">Logout</a></li>

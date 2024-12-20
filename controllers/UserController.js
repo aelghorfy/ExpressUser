@@ -2,6 +2,7 @@ const User = require('../models/User');
 const Post = require('../models/Post');
 const db = require('../db/db');
 const bcrypt = require('bcrypt');
+const { diskStorage } = require('multer');
 const saltRounds = 10;
 
 // Function to get user details and render the user view
